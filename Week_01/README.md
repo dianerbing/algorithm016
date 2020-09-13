@@ -1,22 +1,18 @@
+# 第一周内容总结
+
 给自己定个规矩，总结做到这四个字：言简意赅
 
 ## GitHub
 
 ### 本地仓库操作指令
 
-git --version							查看git版本
-
-git init										初始化git仓库
-
-git config --global user.name "username"		配置用户名
-
-git config --global user.email "a@b.com"			配置电子邮箱
-
-git status								查看git仓库状态
-
-git add 文件名或 **.**					将某个文件或所有文件添加到git仓库，让git去跟踪此文件
-
-git commit -m "提交说明"			提交变动到git本地仓库
+1. git --version							查看git版本
+2. git init										初始化git仓库
+3. git config --global user.name "username"		配置用户名
+4. git config --global user.email "a@b.com"			配置电子邮箱
+5. git status								查看git仓库状态
+6. git add 文件名或 **.**					将某个文件或所有文件添加到git仓库，让git去跟踪此文件
+7. git commit -m "提交说明"			提交变动到git本地仓库
 
 ![image-20200913211312635](C:\Users\wangbing\AppData\Roaming\Typora\typora-user-images\image-20200913211312635.png)
 
@@ -93,3 +89,164 @@ git commit -m "提交说明"			提交变动到git本地仓库
 > 可能多地动手写
 >
 > 测试用例
+
+## 数据结构
+
+- 一维
+  - 基础：数组array(string)、链表 linked list
+  - 高级：栈stack、队列queue、双端队列deque、集合set、映射map (hash or map)  etc
+- 二维
+  - 基础：树 tree，图 graph
+  - 高级：二叉搜索树 binary search tree(red-black tree, AVL)、堆 heap、并查集 disjoint set、字典树Trie etc
+- 特殊
+  - 位运算 Bitwise、布隆过滤器 BloomFilter
+  - LRU Cache
+
+## 算法
+
+- 分支 branch  -> if else、switch
+- 循环 loop -> for、while
+- 递归 Recursion
+- 搜索 Search
+- 动态规划 Dynamic Programming
+- 二分查找 Binary Search
+- 贪心 Greedy
+- 数学 Math，几何 Geometry
+
+## 时间复杂度
+
+- O(1) 常数复杂度 Constant Complexity
+
+- O(log n) 对数复杂度 Logarithmic Complexity 
+
+- O(n) 线性时间复杂度 Linear Complexity
+
+- O(n^2) 平方复杂度 N square Complexity
+
+- O(n^3) 立方复杂度 N cubic Complexity
+
+- O(2^n) 指数复杂度 Exponential Complexity
+
+- O(n!) 阶乘复杂度 Factorial
+
+  ![](C:\Users\wangbing\AppData\Roaming\Typora\typora-user-images\image-20200913222646074.png)
+
+### 常见算法复杂度
+
+- 一层循环 O(n)
+- 二层循环 O(n^2)
+- 三层循环 O(n^3)
+- 菲波那切数列 O(k^n)
+- 二分查找 O(log n)
+- 二叉树遍历 O(n)
+- 图的遍历 O(n)
+- 搜索算法 DFS、BFS O(n) **每个节点访问一次且仅访问一次**
+- 有序二维矩阵二分查找 O(n)
+- 归并排序 O(n log n)
+
+## 数组、链表
+
+### 数组
+
+由内存管理器为其分配**连续的**内存地址
+
+#### 时间复杂度
+
+- preappend（头插） O(1)
+- append（尾插） O(1)
+- insert（中插）O(n) 需要群移
+- delete（删除）O(n) 需要群移
+- lookup（搜索）O(1)
+
+### 链表
+
+> 链表由一个或多个包含节点组成，每个节点包含两个成员：value和next指针（指向下一个节点）
+>
+> ​	节点只包含next指针的叫单链表
+>
+> ​	节点包含next指针和prev指针的叫双向链表
+>
+> 链表的第一个节点叫head，最后一个叫tail
+>
+> ​	如果tail的next指向head，叫循环链表
+
+java中的LinkedList是双向链表
+
+![image-20200913224830437](C:\Users\wangbing\AppData\Roaming\Typora\typora-user-images\image-20200913224830437.png)
+
+#### 时间复杂度
+
+- preappend（头插） O(1)
+- append（尾插） O(1)
+- insert（中插）O(1)
+- delete（删除）O(1)
+- lookup（搜索）O(n)
+
+### 跳表
+
+使用跳表的前提是链表有序
+
+每种操作的时间复杂度都是**O(log n)**，空间复杂度是O(n)
+
+**跳表实现的关键就是链表有序、升维和空间换时间**
+
+![image-20200913225651082](C:\Users\wangbing\AppData\Roaming\Typora\typora-user-images\image-20200913225651082.png)
+
+## 栈和队列
+
+- 栈stack：先进后出，添加、删除皆为O(1)，查询为O(n)
+- 队列queue：先进先出，添加、删除皆为O(1)，查询为O(n)
+- 双端队列Double-End Queue(Deque)：两端都可进出，添加、删除皆为O(1)，查询为O(n)
+- 优先队列Priority Queue：按元素优先级取出，添加O(1)，取出O(log n)，底层实现有很多种heap、bst、treap
+
+### Java Stack API
+
+- boolean empty() 是否为空
+- E peek() 查栈顶元素
+- E pop() 弹出栈顶元素
+- E push(E item) 入栈
+- int search(Object o) 搜索
+
+#### 源码分析
+
+### Java Queue API
+
+- add(e) 
+- remove()
+- element()
+- offer(e)
+- poll()
+- peek()
+
+#### 源码分析
+
+### Java Deque API
+
+#### 源码分析
+
+#### 样例代码
+
+```java
+Deque<String> deque = new LinkedList<>();
+//LinkedList里push就是addFirst
+deque.addFirst("a");
+deque.addFirst("b");
+deque.addFirst("c");
+System.out.println(deque);
+
+String str = deque.peek();
+System.out.println(str);
+System.out.println(deque);
+
+while (deque.size() > 0) {
+    System.out.println(deque.pop());
+}
+System.out.println(deque);
+```
+
+
+
+### Java PriorityQueue API
+
+#### 源码分析
+
