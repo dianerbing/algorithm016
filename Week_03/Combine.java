@@ -10,24 +10,37 @@ import java.util.List;
  */
 public class Combine {
     public static List<List<Integer>> combine(int n, int k) {
-        List<List<Integer>> res = new ArrayList<>();
-        if (k <= 0 || n < k) {
-            return res;
-        }
-        Deque<Integer> path = new ArrayDeque<>();
-        dfs(n, k, 1, path, res);
-        return res;
+        List<List<Integer>> ans = new ArrayList<>();
+        List<Integer> ansOne = new ArrayList<>();
+        recurse(n, k, 1, ansOne, ans);
+        return ans;
     }
 
-    private static void dfs(int n, int k, int begin, Deque<Integer> path, List<List<Integer>> res) {
-        if (path.size() == k) {
-            res.add(new ArrayList<>(path));
+//    //回溯 + 不剪枝  20+毫秒
+//    public static void recurse(int n, int k, int i, List<Integer> ansOne, List<List<Integer>> ans) {
+//        if (ansOne.size() == k) {
+//            ans.add(new ArrayList<>(ansOne));
+//            return;
+//        }
+//        for (; i <= n; i++) {
+//            ansOne.add(i);
+//            recurse(n, k, i+1, ansOne, ans);
+//            ansOne.remove(ansOne.size()-1);
+//        }
+//    }
+
+    //回溯 + 剪枝   2毫秒
+    public static void recurse(int n, int k, int i, List<Integer> ansOne, List<List<Integer>> ans) {
+        if (ansOne.size() == k) {
+            ans.add(new ArrayList<>(ansOne));
             return;
         }
-        for (int i = begin; i <= n; i++) {
-            path.addLast(i);
-            dfs(n, k, i + 1, path, res);
-            path.removeLast();
+
+        //k - ansOne.size - 1 是给下一层递归留出的空间！
+        for (; i <= n - (k - ansOne.size() - 1); i++) {
+            ansOne.add(i);
+            recurse(n, k, i + 1, ansOne, ans);
+            ansOne.remove(ansOne.size() - 1);
         }
     }
 
