@@ -7,11 +7,20 @@
 ### 本地仓库操作指令
 
 1. git --version							查看git版本
+
 2. git init										初始化git仓库
+
 3. git config --global user.name "username"		配置用户名
+
 4. git config --global user.email "a@b.com"			配置电子邮箱
+
+   user.name=dianerbing
+   user.email=dianerbing0906@163.com
+
 5. git status								查看git仓库状态
+
 6. git add 文件名或 **.**					将某个文件或所有文件添加到git仓库，让git去跟踪此文件
+
 7. git commit -m "提交说明"			提交变动到git本地仓库
 
 ![image-20200913211312635](C:\Users\wangbing\AppData\Roaming\Typora\typora-user-images\image-20200913211312635.png)
